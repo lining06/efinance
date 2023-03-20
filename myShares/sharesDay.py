@@ -1,14 +1,14 @@
 # 导入 efinance 库
 
 import efinance as ef
-import mysqlConnect as mysqlConnect
+from myShares.mysql import sharesDayMysql as mysqlConnect
 
 # 股票代码
 stock_code = '600519'
 # 开始日期
 beg = '20000101'
 # 结束日期
-end = '20230310'
+end = '20230313'
 # 获取股票日 K 数据
 rows = ef.stock.get_quote_history(stock_code, beg=beg, end=end)
 for row in rows.values:
@@ -24,4 +24,5 @@ for row in rows.values:
                                row[9],
                                row[10],
                                row[11],
-                               row[12])
+                               row[12],
+                               1)
