@@ -56,3 +56,15 @@ def select(shares_code, shares_name):
         print("select result: ")
         print(row)
     return rows
+
+
+def selectAll(offset, limit):
+    mycursor = mydb.cursor()
+    sql = "select shares_name, shares_code, shares_type from shares_code order by id asc limit %s,%s "
+    val = (offset, limit)
+    mycursor.execute(sql, val)
+    rows = mycursor.fetchall()
+    for row in rows:
+        print("select result: ")
+        print(row)
+    return rows
