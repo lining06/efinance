@@ -33,6 +33,7 @@ def save_shares_day(stock_code, shares_type, shares_name):
                                    row[11],
                                    row[12],
                                    shares_type)
+    # wechat.send_message("股票：" + shares_name + "历史数据写入成功, code: " + stock_code)
 
 
 # 测试股票日线写入
@@ -60,7 +61,7 @@ def get_save_shares_day():
             code = shares[1]
             shares_type = shares[2]
             save_shares_day(code, shares_type, shares_name)
-        offset = shares_list + limit
+        offset = offset + limit
 
 
 get_save_shares_day()
