@@ -16,7 +16,7 @@ def save_shares_day(stock_code, shares_type, shares_name):
     try:
         rows = ef.stock.get_quote_history(stock_code, beg=beg, end=end)
     except Exception as e:
-        wechat.send_message("股票：" + shares_name + "查询详情失败, code: " + stock_code + "Exception:" + e)
+        wechat.send_message("股票：" + shares_name + "查询详情失败, code: " + stock_code + "Exception:" + str(e))
 
     for row in rows.values:
         mysqlConnect.saveSharesDay(row[0],
