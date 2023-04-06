@@ -121,3 +121,15 @@ def select(shares_code, date, shares_type):
     mycursor.execute(sql, val)
     rows = mycursor.fetchall()
     return rows
+
+
+def select_by_shares_code(shares_code):
+    mycursor = mydb.cursor()
+    sql = "select shares_name, shares_code, date, begin_price, end_price, max_price, " \
+          "min_price, deal_count, deal_money, range_percent, change_price_percent," \
+          " change_price, change_count_percent, shares_type from shares_day " \
+          "where shares_code = %s"
+    val = [shares_code]
+    mycursor.execute(sql, val)
+    rows = mycursor.fetchall()
+    return rows

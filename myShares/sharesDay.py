@@ -1,7 +1,7 @@
 # 导入 efinance 库
 
 import efinance as ef
-import mysql_connect.sharesCodeMysql as sharesCodeMysql
+import myShares.mysql_connect.sharesCodeMysql as sharesCodeMysql
 import wechat as wechat
 
 from myShares.mysql_connect import sharesDayMysql as mysqlConnect
@@ -47,7 +47,7 @@ def test_save_shares_day():
     # 获取股票日 K 数据
     get_save_shares_day(stock_code, beg, end)
 
-
+# 同步所有股票数据
 def get_save_shares_day():
     offset = 0
     limit = 100
