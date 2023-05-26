@@ -18,6 +18,3 @@ def send_message(msg):
     except:
         print("send failed: " + msg)
 
-
-message = 'Hello World'
-# send_message(message)

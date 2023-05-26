@@ -12,7 +12,7 @@ def save_shares_day(stock_code, shares_type, shares_name):
     # 开始日期
     beg = '20000101'
     # 结束日期
-    end = '20230313'
+    end = '20230526'
     try:
         rows = ef.stock.get_quote_history(stock_code, beg=beg, end=end)
     except Exception as e:
@@ -36,19 +36,8 @@ def save_shares_day(stock_code, shares_type, shares_name):
     # wechat.send_message("股票：" + shares_name + "历史数据写入成功, code: " + stock_code)
 
 
-# 测试股票日线写入
-def test_save_shares_day():
-    # 股票代码
-    stock_code = '600519'
-    # 开始日期
-    beg = '20000101'
-    # 结束日期
-    end = '20230313'
-    # 获取股票日 K 数据
-    get_save_shares_day(stock_code, beg, end)
-
 # 同步所有股票数据
-def get_save_shares_day():
+def sync_shares_day():
     offset = 0
     limit = 100
     while True:
@@ -64,4 +53,25 @@ def get_save_shares_day():
         offset = offset + limit
 
 
-get_save_shares_day()
+# 获取单只股票日线
+def getShareInfoSingle():
+    # 开始日期
+    beg = '20000511'
+    # 结束日期
+    end = '20230524'
+    stock_code = '1.000985'
+
+    rows = ef.stock.get_quote_history(stock_code, beg=beg, end=end)
+    print(rows)
+
+# 查询股票所在板块
+def get_board():
+    board = ef.stock.get_belong_board('上证指数')
+    print(board)
+
+
+sync_shares_day()
+
+# getShareInfoSingle()
+
+# get_board()

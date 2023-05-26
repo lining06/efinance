@@ -24,7 +24,7 @@ def saveSharesDay(shares_name,
                   shares_type):
     values = select(shares_code, date, shares_type)
     if len(values) > 0:
-        print("ignore shares_name:" + shares_name + " shares_code:" + " date:" + shares_code)
+        print("ignore shares_name:" + shares_name + " shares_code:" + shares_code + " date:" + date)
         return
         # update(shares_name,
         #        shares_code,
