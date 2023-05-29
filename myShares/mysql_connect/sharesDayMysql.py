@@ -24,22 +24,22 @@ def saveSharesDay(shares_name,
                   shares_type):
     values = select(shares_code, date, shares_type)
     if len(values) > 0:
-        print("ignore shares_name:" + shares_name + " shares_code:" + shares_code + " date:" + date)
-        return
-        # update(shares_name,
-        #        shares_code,
-        #        date,
-        #        begin_price,
-        #        end_price,
-        #        max_price,
-        #        min_price,
-        #        deal_count,
-        #        deal_money,
-        #        range_percent,
-        #        change_price_percent,
-        #        change_price,
-        #        change_count_percent,
-        #        shares_type)
+        # print("ignore shares_name:" + shares_name + " shares_code:" + shares_code + " date:" + date)
+        # return
+        update(shares_name,
+               shares_code,
+               date,
+               begin_price,
+               end_price,
+               max_price,
+               min_price,
+               deal_count,
+               deal_money,
+               range_percent,
+               change_price_percent,
+               change_price,
+               change_count_percent,
+               shares_type)
     else:
         insertSharesDay(shares_name,
                         shares_code,
@@ -133,3 +133,12 @@ def select_by_shares_code(shares_code):
     mycursor.execute(sql, val)
     rows = mycursor.fetchall()
     return rows
+
+
+def selectCount(shares_type):
+    mycursor = mydb.cursor()
+    sql = "select count(1) from shares_day where shares_type = %s"
+    val = (shares_type,)
+    mycursor.execute(sql, val)
+    count = mycursor.fetchall()
+    return count[0]
