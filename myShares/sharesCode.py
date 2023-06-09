@@ -5,7 +5,7 @@ import efinance as ef
 import wechat as wechat
 
 
-# stype（1：深圳、2：上海、3：北京）
+# stype（0：指数、1：深圳、2：上海、3：北京 、10：板块）
 
 # 同步股票代码（从文件）
 def sync_shares_code():
