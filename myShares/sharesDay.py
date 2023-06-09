@@ -11,9 +11,9 @@ from myShares.mysql_connect import sharesCodeMysql as mysqlCodeConnect
 # 获取股票日线
 def save_shares_day(stock_code, shares_type, shares_name):
     # 开始日期
-    beg = '20230126'
+    beg = '20230529'
     # 结束日期
-    end = '20230526'
+    end = '20230608'
     try:
         rows = ef.stock.get_quote_history(stock_code, beg=beg, end=end)
     except Exception as e:
