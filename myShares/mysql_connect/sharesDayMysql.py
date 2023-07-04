@@ -142,3 +142,10 @@ def selectCount(shares_type):
     mycursor.execute(sql, val)
     count = mycursor.fetchall()
     return count[0]
+
+
+def addIndex():
+    mycursor = mydb.cursor()
+    sql = "alter table shares_day add KEY `idx_shares_name` (`shares_name`)"
+    mycursor.execute(sql)
+    mydb.commit()
