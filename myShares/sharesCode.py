@@ -53,4 +53,4 @@ def get_board(stock_code):
     return boards
 
 
-sync_shares_bk()
+# sync_shares_bk()

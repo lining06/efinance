@@ -1,19 +1,29 @@
 # 导入 efinance 库
 
 import efinance as ef
-import myShares.mysql_connect.sharesCodeMysql as sharesCodeMysql
+import mysql_connect.sharesCodeMysql as sharesCodeMysql
 import wechat as wechat
 
-from myShares.mysql_connect import sharesDayMysql as mysqlConnect
-from myShares.mysql_connect import sharesCodeMysql as mysqlCodeConnect
+from mysql_connect import sharesDayMysql as mysqlConnect
+from mysql_connect import sharesCodeMysql as mysqlCodeConnect
+from datetime import datetime, timedelta
 
 
 # 获取股票日线
 def save_shares_day(stock_code, shares_type, shares_name):
-    # 开始日期
-    beg = '20230704'
-    # 结束日期
-    end = '20230714'
+    # 获取当前日期
+    current_date = datetime.now().date()
+    # 计算昨天的日期
+    yesterday_datetime = current_date - timedelta(days=1)
+
+    # 将日期格式化为 "20230511"
+    beg = yesterday_datetime.strftime("%Y%m%d")
+    end = current_date.strftime("%Y%m%d")
+
+    # # 开始日期
+    # beg = '20230722'
+    # # 结束日期
+    # end = '20230723'
     try:
         rows = ef.stock.get_quote_history(stock_code, beg=beg, end=end)
     except Exception as e:
