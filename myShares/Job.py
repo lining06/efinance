@@ -2,6 +2,7 @@ import schedule
 import time
 import sharesDay as sharesDay
 import wechat as wechat
+import datetime
 
 
 def job():
@@ -23,4 +24,11 @@ schedule.every().day.at("16:30").do(job)
 
 while True:
     schedule.run_pending()
-    time.sleep(1)
+    time.sleep(5)
+    # 获取当前时间
+    current_time = datetime.datetime.now()
+    # 格式化时间为字符串
+    time_str = current_time.strftime("%Y-%m-%d %H:%M:%S")
+    print("【" + time_str + "】定时任务等待中...")
+
+
