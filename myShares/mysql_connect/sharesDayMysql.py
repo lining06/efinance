@@ -85,6 +85,7 @@ def insertSharesDay(shares_name,
            deal_count, deal_money, range_percent, change_price_percent, change_price, change_count_percent, shares_type)
     mycursor.execute(sql, val)
     mydb.commit()
+    mydb.close()
     print("insert success " + shares_name + " " + shares_code + " " + date)
 
 
@@ -111,6 +112,7 @@ def update(shares_name,
            change_count_percent, shares_code, date, shares_type)
     mycursor.execute(sql, val)
     mydb.commit()
+    mydb.close()
     print("udpate success " + shares_name + " " + shares_code + " " + date)
 
 
@@ -123,6 +125,7 @@ def select(shares_code, date, shares_type):
     val = (shares_code, date, shares_type)
     mycursor.execute(sql, val)
     rows = mycursor.fetchall()
+    mydb.close()
     return rows
 
 
@@ -135,6 +138,7 @@ def select_by_shares_code(shares_code):
     val = [shares_code]
     mycursor.execute(sql, val)
     rows = mycursor.fetchall()
+    mydb.close()
     return rows
 
 
@@ -144,6 +148,7 @@ def selectCount(shares_type):
     val = (shares_type,)
     mycursor.execute(sql, val)
     count = mycursor.fetchall()
+    mydb.close()
     return count[0]
 
 
@@ -152,3 +157,4 @@ def addIndex():
     sql = "alter table shares_day add KEY `idx_shares_name` (`shares_name`)"
     mycursor.execute(sql)
     mydb.commit()
+    mydb.close()

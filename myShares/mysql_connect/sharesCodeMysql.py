@@ -36,7 +36,7 @@ def insertSharesDay(shares_name,
     mycursor.execute(sql, val)
     mydb.commit()
     print("insert success " + shares_name + " " + shares_code)
-
+    mydb.close()
 
 def update(shares_name,
            shares_code,
@@ -47,6 +47,7 @@ def update(shares_name,
     mycursor.execute(sql, val)
     mydb.commit()
     print("udpate success " + shares_name + " " + shares_code)
+    mydb.close()
 
 
 def select(shares_code, shares_name):
@@ -58,6 +59,7 @@ def select(shares_code, shares_name):
     for row in rows:
         print("select result: ")
         print(row)
+    mydb.close()
     return rows
 
 
@@ -70,6 +72,7 @@ def selectAll(offset, limit):
     for row in rows:
         print("select result: ")
         print(row)
+    mydb.close()
     return rows
 
 
@@ -79,4 +82,5 @@ def selectCount(shares_type):
     val = (shares_type,)
     mycursor.execute(sql, val)
     count = mycursor.fetchall()
+    mydb.close()
     return count[0]
