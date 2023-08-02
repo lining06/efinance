@@ -5,7 +5,8 @@ mydb = mysql.connector.connect(
     user="root",
     password="ln6@Asiain",
     autocommit=True,
-    database="lining"
+    database="lining",
+    pool_size=10  # 设置连接池的大小为10
 )
 
 
