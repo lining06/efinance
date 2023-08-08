@@ -17,13 +17,13 @@ def save_shares_day(stock_code, shares_type, shares_name):
     yesterday_datetime = current_date - timedelta(days=1)
 
     # 将日期格式化为 "20230511"
-    # beg = yesterday_datetime.strftime("%Y%m%d")
-    # end = current_date.strftime("%Y%m%d")
+    beg = yesterday_datetime.strftime("%Y%m%d")
+    end = current_date.strftime("%Y%m%d")
 
-    # 开始日期
-    beg = '20230729'
-    # 结束日期
-    end = '20230807'
+    # # 开始日期
+    # beg = '20230729'
+    # # 结束日期
+    # end = '20230807'
     try:
         rows = ef.stock.get_quote_history(stock_code, beg=beg, end=end)
     except Exception as e:
@@ -94,7 +94,7 @@ def statistic_base_info():
                         + "条，北京共: " + str(mysqlConnect.selectCount(3))
                         + "条，板块代码共: " + str(mysqlConnect.selectCount(10)))
 
-sync_shares_day()
+# sync_shares_day()
 
 # getShareInfoSingle()
 
