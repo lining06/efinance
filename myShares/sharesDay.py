@@ -21,9 +21,9 @@ def save_shares_day(stock_code, shares_type, shares_name):
     # end = current_date.strftime("%Y%m%d")
 
     # 开始日期
-    beg = '20230807'
+    beg = '20240313'
     # 结束日期
-    end = '20240313'
+    end = '20241007'
     try:
         rows = ef.stock.get_quote_history(stock_code, beg=beg, end=end)
     except Exception as e:
